@@ -1,7 +1,7 @@
 <template>
     <ul class="list-auto">
-        <li class="list-auto__item">
-            <ItemAuto />
+        <li class="list-auto__item" v-for="car in cars" :key="car.id">
+            <ItemAuto :car="car"/>
         </li>
     </ul>
 </template>
@@ -11,6 +11,7 @@ import ItemAuto from './ItemAuto.vue';
 
 export default {
     name: 'ListAuto',
+    props: ['cars'],
     components: {
         ItemAuto
     }

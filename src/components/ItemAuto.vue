@@ -31,7 +31,8 @@
 
 <script>
 export default {
-    name: 'ItemAuto'
+    name: 'ItemAuto',
+    props: ['car']
 }
 </script>
 

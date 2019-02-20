@@ -1,17 +1,23 @@
 <template>
     <div class="app">
         <Sort />
-        <ListAuto />
+        <ListAuto :cars="cars"/>
     </div>
 </template>
 
 
 <script>
+import Cars from '../assets/cars.js';
 import Sort from './Sort.vue';
 import ListAuto from './ListAuto.vue';
 
 export default {
     name: 'App',
+    data() {
+        return {
+            cars: Cars || []
+        }
+    },
     components: {
         ListAuto,
         Sort

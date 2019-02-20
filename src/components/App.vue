@@ -1,7 +1,10 @@
 <template>
     <div class="app">
-        <Sort />
-        <ListAuto :userCoord="userCoordinates" :cars="cars"/>
+        <Sort @filterCar="filterCar"/>
+        <ListAuto
+            :userCoord="userCoordinates"
+            :cars="filteredCars"
+            @setDistance="setDistance"/>
     </div>
 </template>
 
@@ -16,8 +19,35 @@ export default {
     data() {
         return {
             userCoordinates: '55.7536232, 37.6199775',
-            cars: Cars || []
+            cars: Cars || [],
+            filter: 'price'
         }
+    },
+    methods: {
+        compareCar(a = 0, b = 0) {
+            let prop = this.filter;
+
+            if (a[prop] > b[prop]) return 1;
+            if (a[prop] < b[prop]) return -1;
+        },
+        filterCar(type) {
+            this.filter = type;
+        },
+        setDistance(info) {
+            this.cars.map((el) => {
+                if (el.id == info.id) {
+                    el.distance = parseFloat(info.distance) || 0;
+                }
+            })
+        }
+    },
+    computed: {
+        filteredCars() {
+            return this.cars.sort(this.compareCar);
+        }
+    },
+    mounted() {
+        let filterCars = this.cars.sort(this.compareNumeric);
     },
     components: {
         ListAuto,

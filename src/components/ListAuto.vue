@@ -1,7 +1,10 @@
 <template>
     <ul class="list-auto">
         <li class="list-auto__item" v-for="car in cars" :key="car.id">
-            <ItemAuto :car="car" :userCoord="userCoord"/>
+            <ItemAuto
+                :car="car"
+                :userCoord="userCoord"
+                @setDistance="setDistance"/>
         </li>
     </ul>
 </template>
@@ -12,6 +15,11 @@ import ItemAuto from './ItemAuto.vue';
 export default {
     name: 'ListAuto',
     props: ['cars', 'userCoord'],
+    methods: {
+        setDistance(info) {
+            this.$emit('setDistance', info);
+        }
+    },
     components: {
         ItemAuto
     }

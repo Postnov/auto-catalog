@@ -1,9 +1,17 @@
 <template>
     <div class="item-auto auto" v-if="car">
         <header class="auto__header">
-            <img src="https://183024.selcdn.ru/vwgr_available_cars/volkswagen/touareg_cr/touareg_cr/touareg_cr_status/suv/2T2T/1.png" alt="" class="auto__img">
-            <p v-if="car.model_name" class="auto__title">{{ car.model_name }}</p>
-            <p v-if="car.price" class="auto__price">{{ (+car.price).toLocaleString() }} ₽</p>
+            <img
+                v-if="car.images"
+                :src="car.images"
+                :alt="`Изображение авто: ${car.model_name}`"
+                class="auto__img">
+            <p
+                v-if="car.model_name"
+                class="auto__title">{{ car.model_name }}</p>
+            <p
+                v-if="car.price"
+                class="auto__price">{{ (+car.price).toLocaleString() }} ₽</p>
         </header>
         <div
             class="auto__body"
@@ -124,7 +132,7 @@ export default {
                 let res = this.getDistanceFromLatLonInKm(dLat, dLon, uLat, uLon);
 
                 if (res) {
-                    return `${res.toFixed(1)} км.`;
+                    return res.toFixed(1);
                 }
             }
         },
@@ -133,11 +141,14 @@ export default {
             let distance = this.distanceBetween || false;
 
             if (distance)
-                return `${distance}, ${name}, ${city},${address}`;
+                return `${distance} км., ${name}, ${city},${address}`;
             else
                 return `${name}, ${city}, ${address}`;
         }
     },
+    mounted() {
+        this.$emit('setDistance', {distance: this.distanceBetween, id: this.car.id});
+    }
 }
 </script>
 

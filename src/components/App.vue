@@ -20,6 +20,24 @@ export default {
 </script>
 
 <style>
+body {
+    background-color: #f4f5f7;
+    font-size: 16px;
+    font-family: Arial, serif;
+    box-sizing: border-box;
+}
 
+* {
+    box-sizing: inherit;
+}
+
+.app {
+    max-width: 1170px;
+    margin: 0 auto
+}
+
+img {
+    max-width: 100%;
+}
 </style>
 

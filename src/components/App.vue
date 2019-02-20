@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <Sort />
-        <ListAuto :cars="cars"/>
+        <ListAuto :userCoord="userCoordinates" :cars="cars"/>
     </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
     name: 'App',
     data() {
         return {
+            userCoordinates: '55.7536232, 37.6199775',
             cars: Cars || []
         }
     },

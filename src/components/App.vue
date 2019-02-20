@@ -46,9 +46,6 @@ export default {
             return this.cars.sort(this.compareCar);
         }
     },
-    mounted() {
-        let filterCars = this.cars;
-    },
     components: {
         ListAuto,
         Sort

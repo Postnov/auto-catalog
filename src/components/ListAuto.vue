@@ -18,6 +18,15 @@ export default {
 </script>
 
 <style>
+.list-auto > * { min-width: 0; }
+
+.list-auto {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 0;
+    grid-gap: 20px 1.5%;
+    list-style: none;
+}
 
 </style>
 

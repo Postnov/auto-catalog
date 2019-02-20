@@ -5,7 +5,6 @@
             <input
                 @change="$emit('filterCar', 'price')"
                 class="sort__input"
-                checked
                 type="radio"
                 name="sort"
                 value="price">

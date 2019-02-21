@@ -24,12 +24,6 @@ export default {
         }
     },
     methods: {
-        compareCar(a = 0, b = 0) {
-            let prop = this.filter;
-
-            if (a[prop] > b[prop]) return 1;
-            if (a[prop] < b[prop]) return -1;
-        },
         filterCar(type) {
             this.filter = type;
         },
@@ -43,7 +37,7 @@ export default {
     },
     computed: {
         filteredCars() {
-            return this.cars.sort(this.compareCar);
+            return this.cars.sort((a, b) => a[this.filter] - b[this.filter]);
         }
     },
     components: {

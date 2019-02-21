@@ -1,6 +1,9 @@
 <template>
     <div class="app">
-        <Sort @filterCar="filterCar"/>
+        <div class="app__top-panel">
+            <Sort @filterCar="filterCar"/>
+            <Search @searchCar="searchCar"/>
+        </div>
         <ListAuto
             :userCoord="userCoordinates"
             :cars="filteredCars"
@@ -13,6 +16,7 @@
 import Cars from '../assets/cars.js';
 import Sort from './Sort.vue';
 import ListAuto from './ListAuto.vue';
+import Search from './Search.vue';
 
 export default {
     name: 'App',
@@ -20,7 +24,8 @@ export default {
         return {
             userCoordinates: '55.7536232, 37.6199775',
             cars: Cars || [],
-            filter: 'price'
+            filter: 'price',
+            query: ''
         }
     },
     methods: {
@@ -33,16 +38,31 @@ export default {
                     el.distance = parseFloat(info.distance) || 0;
                 }
             })
-        }
+        },
+        searchCar(query) { this.query = query;}
     },
     computed: {
         filteredCars() {
-            return this.cars.sort((a, b) => a[this.filter] - b[this.filter]);
+            return this.cars
+                    .sort((a, b) => a[this.filter] - b[this.filter])
+                    .filter((el) => {
+                        let {model_name, kit_name, dealer: {city, address, name}} = el;
+                        let fullStr = '';
+
+                        if (model_name) fullStr += model_name;
+                        if(kit_name) fullStr    += kit_name;
+                        if(city) fullStr        += city;
+                        if(address) fullStr     += address;
+                        if(name) fullStr        += name;
+
+                        return fullStr.toLowerCase().indexOf(this.query.toLowerCase()) !== -1;
+                    });
         }
     },
     components: {
         ListAuto,
-        Sort
+        Sort,
+        Search
     }
 }
 </script>
@@ -62,6 +82,13 @@ body {
 .app {
     max-width: 1170px;
     margin: 0 auto
+}
+
+.app__top-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 img {

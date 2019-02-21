@@ -4,19 +4,13 @@
             type="text"
             class="search__input"
             placeholder="Поиск по авто, названию, адресу, городу филиала"
-            @keyup="$emit('searchCar', query)"
-            v-model="query">
+            @keyup="$emit('searchCar', $event.target.value)">
     </div>
 </template>
 
 <script>
 export default {
-    name: "Search",
-    data() {
-        return {
-            query: ''
-        }
-    }
+    name: "Search"
 }
 </script>
 

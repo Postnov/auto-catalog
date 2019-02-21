@@ -51,5 +51,24 @@ export default {
     color: #888;
 }
 
+@media (max-width: 979px) {
+    .list-auto__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .list-auto__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .list-auto__list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 </style>
 

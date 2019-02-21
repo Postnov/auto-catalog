@@ -56,6 +56,10 @@
 </template>
 
 <script>
+import getNumEnding from '../utils/getNumEnding.js';
+import getDistance from '../utils/getDistance.js';
+
+
 export default {
     name: 'ItemAuto',
     props: ['car', 'userCoord'],
@@ -72,48 +76,13 @@ export default {
                 this.showItems = 3;
             }
         },
-        getNumEnding(number, endingArray) {
-            var number = number % 100;
-            if (number>=11 && number<=19) {
-                var ending = endingArray[2];
-            }
-            else {
-                var i = number % 10;
-                switch (i) {
-                    case (1): ending = endingArray[0]; break;
-                    case (2):
-                    case (3):
-                    case (4): ending = endingArray[1]; break;
-                    default: ending = endingArray[2];
-                }
-            }
-            return ending;
-        },
-
-        deg2rad(deg) {
-            return deg * (Math.PI/180)
-        },
-
-        getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-            var R = 6371; // Radius of the earth in km
-            var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
-            var dLon = this.deg2rad(lon2-lon1);
-            var a =
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
-                Math.sin(dLon/2) * Math.sin(dLon/2)
-                ;
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            var d = R * c; // Distance in km
-            return d;
-        },
-
 
     },
     computed: {
         formattedWord() {
             let lengthFeatures = this.car.features.length - 3;
-            return this.getNumEnding(lengthFeatures, ['особенность','особенности', 'особеностей'])
+            let ending = getNumEnding(lengthFeatures, ['особенность','особенности', 'особеностей']);
+            return ending;
         },
         orderedFeatures() {
             let features = this.car.features;
@@ -129,7 +98,7 @@ export default {
             let uLon = this.userCoord.split(',')[1];
 
             if (dLat && dLon) {
-                let res = this.getDistanceFromLatLonInKm(dLat, dLon, uLat, uLon);
+                let res = getDistance(dLat, dLon, uLat, uLon);
 
                 if (res) {
                     return res.toFixed(1);

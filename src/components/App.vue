@@ -37,7 +37,7 @@ export default {
                 if (el.id == info.id) {
                     el.distance = parseFloat(info.distance) || 0;
                 }
-            })
+            });
         },
         searchCar(query) { this.query = query;}
     },
@@ -46,14 +46,14 @@ export default {
             return this.cars
                     .sort((a, b) => a[this.filter] - b[this.filter])
                     .filter((el) => {
-                        let {model_name, kit_name, dealer: {city, address, name}} = el;
+                        let { model_name, kit_name, dealer: { city, address, name } } = el;
                         let fullStr = '';
 
                         if (model_name) fullStr += model_name;
-                        if(kit_name) fullStr    += kit_name;
-                        if(city) fullStr        += city;
-                        if(address) fullStr     += address;
-                        if(name) fullStr        += name;
+                        if (kit_name)   fullStr += kit_name;
+                        if (city)       fullStr += city;
+                        if (address)    fullStr += address;
+                        if (name)       fullStr += name;
 
                         return fullStr.toLowerCase().indexOf(this.query.toLowerCase()) !== -1;
                     });

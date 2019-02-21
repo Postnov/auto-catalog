@@ -72,11 +72,11 @@ export default {
         toggleShow() {
             this.showItems = (showItems) ? this.showItems : this.car.features.length;
         },
-
     },
     computed: {
         formattedWord() {
             let lengthFeatures = this.car.features.length - 3;
+
             return getNumEnding(lengthFeatures,
             ['особенность','особенности', 'особеностей']);
         },

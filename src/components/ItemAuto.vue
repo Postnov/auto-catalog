@@ -8,7 +8,7 @@
                 class="auto__img">
             <p
                 v-if="car.model_name"
-                class="auto__title">{{ car.model_name }}</p>
+                class="auto__title">{{ car.model_name }} {{ car.kit_name || null }}</p>
             <p
                 v-if="car.price"
                 class="auto__price">{{ (+car.price).toLocaleString() }} ₽</p>

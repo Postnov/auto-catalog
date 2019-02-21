@@ -4,6 +4,7 @@
          <label class="sort__input-item" >
             <input
                 @change="$emit('filterCar', 'price')"
+                checked
                 class="sort__input"
                 type="radio"
                 name="sort"

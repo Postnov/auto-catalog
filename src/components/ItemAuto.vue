@@ -107,12 +107,15 @@ export default {
         },
         dealerAddress() {
             let { name, address, city } = this.car.dealer;
-            let distance = this.distanceBetween || false;
+            let distance = this.distanceBetween;
+            let res = '';
 
-            if (distance)
-                return `${distance} км., ${name}, ${city},${address}`;
-            else
-                return `${name}, ${city}, ${address}`;
+            if (distance)   res += distance + ' км, ';
+            if (name)       res += name + ', ';
+            if (city)       res += city + ', ';
+            if (address)    res += address + ', ';
+
+            return res;
         }
     },
     mounted() {

@@ -1,29 +1,22 @@
 # auto-catalog
 
-## Project setup
+## Особенности
+- Сортировка по цене, удаленности
+- Расчет удаленности по координатам пользователя и дилера.
+- Поиск по названию авто, названию, адресу, городу дилера.
+- Подсчет скрытых особенностей
+- Установка правильного окончания в завимости от количества скрытых особенностей.
+
+## Установка зависимостей
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+## Компиляция
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Демо:
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![Demo .gif](src//assets/demo-auto-catalog.gif)

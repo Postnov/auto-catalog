@@ -70,39 +70,31 @@ export default {
     },
     methods: {
         toggleShow() {
-            if (showItems == false) {
-                this.showItems = this.car.features.length;
-            } else if (showItems == true) {
-                this.showItems = 3;
-            }
+            this.showItems = (showItems) ? this.showItems : this.car.features.length;
         },
 
     },
     computed: {
         formattedWord() {
             let lengthFeatures = this.car.features.length - 3;
-            let ending = getNumEnding(lengthFeatures, ['особенность','особенности', 'особеностей']);
-            return ending;
+            return getNumEnding(lengthFeatures,
+            ['особенность','особенности', 'особеностей']);
         },
         orderedFeatures() {
             let features = this.car.features;
-            if (this.showAll === false) {
-                return features.slice(0, 3);
-            }else if (this.showAll === true) {
-                return features;
-            }
+
+            return (this.showAll) ? features : features.slice(0, 3);
         },
         distanceBetween() {
-            let {latitude:dLat, longitude:dLon } = this.car.dealer;
+            let { latitude:dLat, longitude:dLon } = this.car.dealer;
             let uLat = this.userCoord.split(',')[0];
             let uLon = this.userCoord.split(',')[1];
 
             if (dLat && dLon) {
                 let res = getDistance(dLat, dLon, uLat, uLon);
 
-                if (res) {
-                    return res.toFixed(1);
-                }
+                if (res) return res.toFixed(1);
+                else     return 0;
             }
         },
         dealerAddress() {

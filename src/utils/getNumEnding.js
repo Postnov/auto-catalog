@@ -1,10 +1,10 @@
 export default function getNumEnding(number, endingArray) {
-    var number = number % 100;
-    if (number>=11 && number<=19) {
-        var ending = endingArray[2];
-    }
+    const num = number % 100;
+    let ending;
+
+    if (num>=11 && num<=19) ending = endingArray[2];
     else {
-        var i = number % 10;
+        let i = num % 10;
         switch (i) {
             case (1): ending = endingArray[0]; break;
             case (2):

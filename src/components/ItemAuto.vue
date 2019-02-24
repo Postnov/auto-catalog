@@ -89,8 +89,7 @@ export default {
         },
         distanceBetween() {
             let { latitude:dLat, longitude:dLon } = this.car.dealer;
-            let uLat = this.userCoord.split(',')[0];
-            let uLon = this.userCoord.split(',')[1];
+            let [ uLat, uLon ] = this.userCoord.split(',');
 
             if (dLat && dLon) {
                 let res = getDistance(dLat, dLon, uLat, uLon);

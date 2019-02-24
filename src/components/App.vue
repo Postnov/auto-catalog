@@ -34,9 +34,7 @@ export default {
         },
         setDistance(info) {
             this.cars.map((el) => {
-                if (el.id == info.id) {
-                    el.distance = parseFloat(info.distance) || 0;
-                }
+                if (el.id == info.id) el.distance = parseFloat(info.distance) || 0;
             });
         },
         searchCar(query) { this.query = query;}

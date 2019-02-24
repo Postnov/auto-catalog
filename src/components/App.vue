@@ -68,6 +68,17 @@ export default {
 </script>
 
 <style>
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
 body {
     background-color: #f4f5f7;
     font-size: 16px;

@@ -74,16 +74,9 @@ export default {
 </script>
 
 <style>
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
-
 html {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  min-height: calc(100vh + 1px);
 }
-
 
 body {
     background-color: #f4f5f7;
@@ -98,7 +91,7 @@ body {
 
 .app {
     max-width: 1170px;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .app__top-panel {

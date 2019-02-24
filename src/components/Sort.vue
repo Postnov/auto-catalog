@@ -31,35 +31,35 @@ export default {
 </script>
 
 <style>
-    .sort {
-        padding: 20px 0;
-    }
+.sort {
+  padding: 20px 0;
+}
 
-    .sort__title {
-        margin-right: 20px;
-    }
+.sort__title {
+  margin-right: 20px;
+}
 
-    .sort__input-item {
-        margin-right: 10px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: flex-start;
-        cursor: pointer;
-    }
+.sort__input-item {
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
 
-    .sort__input {
-        margin-right: 5px;
-    }
+.sort__input {
+  margin-right: 5px;
+}
 
-    @media only screen and (max-width: 430px) {
-        .sort {
-            text-align: center;
-            width: 100%;
-        }
-        .sort__title {
-            width: 100%;
-            display: block;
-            margin-bottom: 15px;
-        }
-    }
+@media only screen and (max-width: 430px) {
+  .sort {
+    text-align: center;
+    width: 100%;
+  }
+  .sort__title {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+  }
+}
 </style>

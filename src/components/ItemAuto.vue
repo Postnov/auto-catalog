@@ -120,82 +120,82 @@ export default {
 
 <style>
 .auto {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 15px 0 0;
-    margin-bottom: 20px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px 0 0;
+  margin-bottom: 20px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .auto__header {
-    padding: 0 14px;
+  padding: 0 14px;
 }
 
 .auto__title,
 .auto__price {
-    font-size: 19px;
-    font-weight: bold;
-    margin: 0;
+  font-size: 19px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .auto__title {
-    color: #299bd7;
+  color: #299bd7;
 }
 
 .auto__price {
-    color: #000;
-    margin-top: 10px;
+  color: #000;
+  margin-top: 10px;
 }
 
 .auto__body {
-    padding: 10px 14px 15px;
-    flex-grow: 1;
+  padding: 10px 14px 15px;
+  flex-grow: 1;
 }
 
 .auto__features {
-    color: #a7a8ac;
-    list-style: disc;
-    padding-left: 20px;
-    font-size: 14px;
+  color: #a7a8ac;
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 14px;
 }
 
 .auto__feature {
-    padding: 3px 0;
+  padding: 3px 0;
 }
 
 .auto__show-more {
-    color: #299bd7;
-    margin-top: 5px;
-    display: inline-block;
-    font-size: 14px;
-    cursor: pointer;
+  color: #299bd7;
+  margin-top: 5px;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .auto__footer {
-    padding: 12px 14px;
-    border-top: 1px solid #dfe0e2;
+  padding: 12px 14px;
+  border-top: 1px solid #dfe0e2;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .auto__loc-icon {
-    width: 23px;
-    height: 23px;
-    fill: #bec2c5;
+  width: 23px;
+  height: 23px;
+  fill: #bec2c5;
 }
 
 .auto__address {
-    font-size: 13px;
-    color: #299bd7;
-    max-width: calc(100% - 23px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-decoration: none;
+  font-size: 13px;
+  color: #299bd7;
+  max-width: calc(100% - 23px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
 }
 </style>

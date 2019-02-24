@@ -16,15 +16,15 @@ export default {
 
 <style>
 .search {
-    width: 100%;
-    max-width: 450px;
+  width: 100%;
+  max-width: 450px;
 }
 .search__input {
-    padding: 10px;
-    background-color: #fff;
-    outline: none;
-    color: #555;
-    width: 100%;
-    font-size: 14px;
+  padding: 10px;
+  background-color: #fff;
+  outline: none;
+  color: #555;
+  width: 100%;
+  font-size: 14px;
 }
 </style>

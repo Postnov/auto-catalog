@@ -79,29 +79,29 @@ html {
 }
 
 body {
-    background-color: #f4f5f7;
-    font-size: 16px;
-    font-family: Arial, serif;
-    box-sizing: border-box;
+  background-color: #f4f5f7;
+  font-size: 16px;
+  font-family: Arial, serif;
+  box-sizing: border-box;
 }
 
 * {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 .app {
-    max-width: 1170px;
-    margin: 0 auto;
+  max-width: 1170px;
+  margin: 0 auto;
 }
 
 .app__top-panel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 </style>

@@ -42,43 +42,45 @@ export default {
 
 <style>
 .list-auto {
-    margin-top: 20px;
+  margin-top: 20px;
 }
-.list-auto__list > * { min-width: 0; }
+.list-auto__list > * {
+  min-width: 0;
+}
 
 .list-auto__list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding-left: 0;
-    grid-gap: 20px 1.5%;
-    list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-left: 0;
+  grid-gap: 20px 1.5%;
+  list-style: none;
 }
 
 .list-auto__empty {
-    margin-top: 100px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: #888;
+  margin-top: 100px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #888;
 }
 
 @media (max-width: 979px) {
-    .list-auto__list {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .list-auto__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 
 @media (max-width: 768px) {
-    .list-auto__list {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .list-auto__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
-    .list-auto__list {
-        grid-template-columns: repeat(1, 1fr);
-    }
+  .list-auto__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 </style>

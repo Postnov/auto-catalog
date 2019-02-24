@@ -9,6 +9,8 @@
 
             <li class="list-auto__item" v-for="car in cars" :key="car.id">
                 <ItemAuto
+                    :style="{ minHeight: minHeight + 'px' }"
+                    ref="auto"
                     :car="car"
                     :userCoord="userCoord"
                     @setDistance="setDistance"/>
@@ -29,10 +31,24 @@ import ItemAuto from './ItemAuto.vue';
 export default {
   name: 'ListAuto',
   props: ['cars', 'userCoord'],
+  data() {
+    return {
+      minHeight: 0,
+    };
+  },
   methods: {
     setDistance(info) {
       this.$emit('setDistance', info);
     },
+  },
+  mounted() {
+    window.addEventListener('load', () => {
+      const elements = this.$refs.auto || {};
+      const elHeight = elements.map(el => el.$el.offsetHeight);
+      const minHeight = Math.max.apply(null, elHeight);
+
+      this.minHeight = minHeight;
+    });
   },
   components: {
     ItemAuto,

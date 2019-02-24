@@ -47,7 +47,12 @@ export default {
         .slice()
         .sort((a, b) => a[this.filter] - b[this.filter])
         .filter((el) => {
-          const { modelName, kitName, dealer: { city, address, name } } = el;
+          const {
+            model_name: modelName,
+            kit_name: kitName,
+            dealer: { city, address, name },
+          } = el;
+
           let fullStr = '';
 
           if (modelName) fullStr += modelName;

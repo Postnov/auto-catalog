@@ -50,5 +50,17 @@ export default {
     .sort__input {
         margin-right: 5px;
     }
+
+    @media only screen and (max-width: 430px) {
+        .sort {
+            text-align: center;
+            width: 100%;
+        }
+        .sort__title {
+            width: 100%;
+            display: block;
+            margin-bottom: 15px;
+        }
+    }
 </style>
 

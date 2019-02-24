@@ -1,13 +1,21 @@
 <template>
     <div class="list-auto">
-        <ul v-if="cars.length" class="list-auto__list">
+            <masonry
+                :cols="{default: 4, 1000: 3, 700: 2, 480: 1}"
+                :gutter="30"
+                v-if="cars.length"
+                class="list-auto__list"
+            >
+
             <li class="list-auto__item" v-for="car in cars" :key="car.id">
                 <ItemAuto
                     :car="car"
                     :userCoord="userCoord"
                     @setDistance="setDistance"/>
             </li>
-        </ul>
+
+
+            </masonry>
 
         <p v-else class="list-auto__empty">
             По вашему запросу автомобили не найдены. Измените или очистите запрос.
@@ -33,6 +41,9 @@ export default {
 </script>
 
 <style>
+.list-auto {
+    margin-top: 20px;
+}
 .list-auto__list > * { min-width: 0; }
 
 .list-auto__list {

@@ -19,10 +19,12 @@
 
             <ul
                 class="auto__features"
-                v-for="(feature , index) in orderedFeatures"
-                :key="index + feature">
+                >
 
-                <li class="auto__feature"> {{ feature }}</li>
+                <li
+                    :key="index + feature"
+                    v-for="(feature , index) in orderedFeatures"
+                    class="auto__feature"> {{ feature }}</li>
             </ul>
 
             <span
@@ -121,6 +123,10 @@ export default {
     background-color: #fff;
     border-radius: 10px;
     padding: 15px 0 0;
+    margin-bottom: 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .auto__header {
@@ -145,6 +151,7 @@ export default {
 
 .auto__body {
     padding: 10px 14px 15px;
+    flex-grow: 1;
 }
 
 .auto__features {

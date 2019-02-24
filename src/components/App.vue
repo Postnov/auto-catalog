@@ -55,11 +55,11 @@ export default {
 
           let fullStr = '';
 
-          if (modelName) fullStr += modelName;
+          if (modelName) fullStr += `${modelName} `;
           if (kitName) fullStr += kitName;
-          if (city) fullStr += city;
-          if (address) fullStr += address;
-          if (name) fullStr += name;
+          if (name) fullStr += `${name} `;
+          if (city) fullStr += `${city} `;
+          if (address) fullStr += `${address} `;
 
           return fullStr.toLowerCase().indexOf(this.query.toLowerCase()) !== -1;
         });

@@ -1,17 +1,18 @@
 export default function getNumEnding(number, endingArray) {
-    const num = number % 100;
-    let ending;
+  const num = number % 100;
+  const [fEnding, sEnding, tEnding] = endingArray;
+  let ending;
 
-    if (num>=11 && num<=19) ending = endingArray[2];
-    else {
-        let i = num % 10;
-        switch (i) {
-            case (1): ending = endingArray[0]; break;
-            case (2):
-            case (3):
-            case (4): ending = endingArray[1]; break;
-            default: ending = endingArray[2];
-        }
+  if (num >= 11 && num <= 19) ending = sEnding;
+  else {
+    const i = num % 10;
+    switch (i) {
+      case (1): ending = fEnding; break;
+      case (2):
+      case (3):
+      case (4): ending = sEnding; break;
+      default: ending = tEnding;
     }
-    return ending;
+  }
+  return ending;
 }

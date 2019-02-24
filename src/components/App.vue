@@ -13,56 +13,59 @@
 
 
 <script>
-import Cars from '../assets/cars.js';
+import Cars from '../assets/cars';
 import Sort from './Sort.vue';
 import ListAuto from './ListAuto.vue';
 import Search from './Search.vue';
 
 export default {
-    name: 'App',
-    data() {
-        return {
-            userCoordinates: '55.7536232, 37.6199775',
-            cars: Cars || [],
-            filter: 'price',
-            query: ''
-        }
+  name: 'App',
+  data() {
+    return {
+      userCoordinates: '55.7536232, 37.6199775',
+      cars: Cars || [],
+      filter: 'price',
+      query: '',
+    };
+  },
+  methods: {
+    filterCar(type) {
+      this.filter = type;
     },
-    methods: {
-        filterCar(type) {
-            this.filter = type;
-        },
-        setDistance(info) {
-            this.cars.map((el) => {
-                if (el.id == info.id) el.distance = parseFloat(info.distance) || 0;
-            });
-        },
-        searchCar(query) { this.query = query;}
+    setDistance(info) {
+      this.cars.map((el) => {
+        const item = el;
+        if (item.id === info.id) item.distance = parseFloat(info.distance) || 0;
+        return item;
+      });
     },
-    computed: {
-        filteredCars() {
-            return this.cars
-                    .sort((a, b) => a[this.filter] - b[this.filter])
-                    .filter((el) => {
-                        let { model_name, kit_name, dealer: { city, address, name } } = el;
-                        let fullStr = '';
+    searchCar(query) { this.query = query; },
+  },
+  computed: {
+    filteredCars() {
+      return this.cars
+        .slice()
+        .sort((a, b) => a[this.filter] - b[this.filter])
+        .filter((el) => {
+          const { modelName, kitName, dealer: { city, address, name } } = el;
+          let fullStr = '';
 
-                        if (model_name) fullStr += model_name;
-                        if (kit_name)   fullStr += kit_name;
-                        if (city)       fullStr += city;
-                        if (address)    fullStr += address;
-                        if (name)       fullStr += name;
+          if (modelName) fullStr += modelName;
+          if (kitName) fullStr += kitName;
+          if (city) fullStr += city;
+          if (address) fullStr += address;
+          if (name) fullStr += name;
 
-                        return fullStr.toLowerCase().indexOf(this.query.toLowerCase()) !== -1;
-                    });
-        }
+          return fullStr.toLowerCase().indexOf(this.query.toLowerCase()) !== -1;
+        });
     },
-    components: {
-        ListAuto,
-        Sort,
-        Search
-    }
-}
+  },
+  components: {
+    ListAuto,
+    Sort,
+    Search,
+  },
+};
 </script>
 
 <style>
@@ -104,4 +107,3 @@ img {
     max-width: 100%;
 }
 </style>
-

@@ -27,17 +27,17 @@
 import ItemAuto from './ItemAuto.vue';
 
 export default {
-    name: 'ListAuto',
-    props: ['cars', 'userCoord'],
-    methods: {
-        setDistance(info) {
-            this.$emit('setDistance', info);
-        }
+  name: 'ListAuto',
+  props: ['cars', 'userCoord'],
+  methods: {
+    setDistance(info) {
+      this.$emit('setDistance', info);
     },
-    components: {
-        ItemAuto
-    }
-}
+  },
+  components: {
+    ItemAuto,
+  },
+};
 </script>
 
 <style>
@@ -82,4 +82,3 @@ export default {
 }
 
 </style>
-

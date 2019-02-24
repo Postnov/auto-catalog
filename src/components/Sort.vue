@@ -26,8 +26,8 @@
 
 <script>
 export default {
-    name: 'Sort'
-}
+  name: 'Sort',
+};
 </script>
 
 <style>
@@ -63,4 +63,3 @@ export default {
         }
     }
 </style>
-

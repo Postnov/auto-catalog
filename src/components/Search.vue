@@ -10,8 +10,8 @@
 
 <script>
 export default {
-    name: "Search"
-}
+  name: 'Search',
+};
 </script>
 
 <style>
@@ -28,4 +28,3 @@ export default {
     font-size: 14px;
 }
 </style>
-

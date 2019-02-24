@@ -41,7 +41,11 @@
         <div class="auto__footer">
             <svg class="auto__loc-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
                 <g fill-rule="evenodd">
-                    <path d="m249.1 82c54.4 0 113.1 33.7 114.9 124.2 0 78.4-88.8 175.8-109.7 198.5-1.7 1.8-6.9 1.8-8.7 0-20.8-20.9-109.6-118.4-109.6-198.5 0-90.5 57.8-124.2 113.1-124.2zm0.8 148.8c19.9 0 36-16.1 36-35.9s-16.1-35.9-36-35.9-36 16.1-36 35.9 16.1 35.9 36 35.9z"/>
+                    <path d="m249.1 82c54.4 0 113.1 33.7 114.9 124.2 0
+                    78.4-88.8 175.8-109.7 198.5-1.7 1.8-6.9 1.8-8.7
+                    0-20.8-20.9-109.6-118.4-109.6-198.5 0-90.5 57.8-124.2
+                    113.1-124.2zm0.8 148.8c19.9 0 36-16.1 36-35.9s-16.1-35.9-36-35.9-36
+                    16.1-36 35.9 16.1 35.9 36 35.9z"/>
                 </g>
             </svg>
             <a
@@ -58,63 +62,60 @@
 </template>
 
 <script>
-import getNumEnding from '../utils/getNumEnding.js';
-import getDistance from '../utils/getDistance.js';
+import getNumEnding from '../utils/getNumEnding';
+import getDistance from '../utils/getDistance';
 
 
 export default {
-    name: 'ItemAuto',
-    props: ['car', 'userCoord'],
-    data() {
-        return {
-            showAll: false,
-        }
+  name: 'ItemAuto',
+  props: ['car', 'userCoord'],
+  data() {
+    return {
+      showAll: false,
+    };
+  },
+  methods: {},
+  computed: {
+    formattedWord() {
+      const lengthFeatures = this.car.features.length - 3;
+
+      return getNumEnding(lengthFeatures,
+        ['особенность', 'особенности', 'особеностей']);
     },
-    methods: {
-        toggleShow() {
-            this.showItems = (showItems) ? this.showItems : this.car.features.length;
-        },
+    orderedFeatures() {
+      const { features } = this.car;
+
+      return (this.showAll) ? features : features.slice(0, 3);
     },
-    computed: {
-        formattedWord() {
-            let lengthFeatures = this.car.features.length - 3;
+    distanceBetween() {
+      const { latitude: dLat, longitude: dLon } = this.car.dealer;
+      const [uLat, uLon] = this.userCoord.split(',');
 
-            return getNumEnding(lengthFeatures,
-            ['особенность','особенности', 'особеностей']);
-        },
-        orderedFeatures() {
-            let features = this.car.features;
+      if (dLat && dLon) {
+        const res = getDistance(dLat, dLon, uLat, uLon);
 
-            return (this.showAll) ? features : features.slice(0, 3);
-        },
-        distanceBetween() {
-            let { latitude:dLat, longitude:dLon } = this.car.dealer;
-            let [ uLat, uLon ] = this.userCoord.split(',');
-
-            if (dLat && dLon) {
-                let res = getDistance(dLat, dLon, uLat, uLon);
-
-                if (res) return res.toFixed(1);
-                else     return 0;
-            }
-        },
-        dealerAddress() {
-            let { name, address, city } = this.car.dealer;
-            let distance = this.distanceBetween;
-            let res = '';
-
-            if (distance)   res += distance + ' км, ';
-            if (name)       res += name + ', ';
-            if (city)       res += city + ', ';
-            if (address)    res += address + ', ';
-
-            return res;
-        }
+        if (res) return res.toFixed(1);
+        return 0;
+      }
+      return 0;
     },
-    mounted() {
-        this.$emit('setDistance', {distance: this.distanceBetween, id: this.car.id});
-    }
-}
+    dealerAddress() {
+      const { name, address, city } = this.car.dealer;
+      const distance = this.distanceBetween;
+      let res = '';
+
+      if (distance) res += `${distance} км, `;
+      if (name) res += `${name}, `;
+      if (city) res += `${city}, `;
+      if (address) res += `${address}, `;
+
+      return res;
+    },
+  },
+  mounted() {
+    this.$emit('setDistance', { distance: this.distanceBetween, id: this.car.id });
+  },
+};
 </script>
 
 <style>

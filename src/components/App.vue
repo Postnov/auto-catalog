@@ -74,15 +74,12 @@ export default {
 </script>
 
 <style>
-html {
-  min-height: calc(100vh + 1px);
-}
-
 body {
   background-color: #f4f5f7;
   font-size: 16px;
   font-family: Arial, serif;
   box-sizing: border-box;
+  overflow-y: scroll;
 }
 
 * {
